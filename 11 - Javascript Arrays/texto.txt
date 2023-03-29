@@ -1,0 +1,105 @@
+Métodos para strings
+Antes de começarmos, é importante ressaltar que o JavaScript diferencia strings como tipos primitivos (com aspas duplas ou simples) de objetos Strings (quando usamos a palavra reservada new). Mas, por baixo dos panos toda string, mesmo as que criamos com a chamada “forma literal”, por exemplo const texto = “Alura”, acaba convertida para um objeto do tipo String. Por isso, temos acesso a uma série de métodos e propriedades deste objeto.
+
+Agora que entendemos isso, vamos ver algumas propriedades e métodos úteis e bem práticos para trabalhar com strings em nossas aplicações.
+
+.length
+
+A propriedade length serve para nos informar o tamanho de uma string. E por que isso é útil?
+
+Caso sua aplicação tenha como uma das regras para criação de senhas (que em geral são alfanuméricas) o tamanho de 8 caracteres, usar length será uma boa opção, pois ajudará a contar a quantidade de caracteres da string.
+
+Para testar a propriedade length, vamos usar a string alura, que retornará o tamanho 5.
+
+const palavra="alura";console.log(palavra.length) //5
+Veja que length é exatamente a mesma propriedade que acessamos quando queremos descobrir o comprimento (ou seja, a quantidade de elementos) em um array.
+
+charAt()
+
+Com o método charAt() conseguimos acessar um caractere de uma string. Lembre-se que, por baixo dos panos, strings são arrays de caracteres, e em cada posição temos o caractere que compõe a string.
+
+Veja o exemplo abaixo:
+
+console.log("alura".charAt(3)) //r
+Após a execução do método charAt(), ela retornará o caractere r, que é o valor que consta na posição 3 da string - lembrando que arrays em JavaScript começam na posição 0 (zero).
+
+Outra alternativa será usar a notação de colchetes para encontrar um caractere da string, da seguinte forma:
+
+const palavra="Alura"console.log(palavra[0]) //A
+Será exibido o caractere A, ou seja, o que está na primeira posição da string. O resultado da execução do charAt() é uma string.
+
+Mas e se quisermos saber qual a posição de um caractere dentro da string?
+
+indexOf()
+
+Respondendo a pergunta anterior, existe a função indexOf(), que retorna a posição de um caractere dentro da string.
+
+Por exemplo:
+
+const palavra="Alura"console.log(palavra.indexOf("a")) //4
+O resultado é a posição 4. Porém, na utilização do indexOf(), fique atento caso o caractere que se busca na string seja encontrado em mais de uma posição, pois será retornada somente a primeira ocorrência. veja o código abaixo:
+
+const palavra="Divertidamente"console.log(palavra.indexOf("e")) //3
+O resultado da execução do indexOf() é um valor numérico.
+
+toUpperCase() e toLowerCase()
+
+São duas funções bastante utilizadas quando estamos trabalhando com string e precisamos deixar o texto todo em letras minúsculas (lower case) ou todo em maiúsculas (upper case). Vamos ver o código abaixo:
+
+const palavra="alura";console.log(palavra.toUpperCase()) //ALURAconsole.log(palavra.toLowerCase()) //alura
+Após a execução do código, o console irá exibir ALURA e alura respectivamente. O resultado da execução dos métodos toUpperCase() e toLowerCase() é uma nova string .
+
+substr()
+
+Outra função muito interessante é a substr() (substring), que permite que façamos a extração de parte de uma string, conforme o código abaixo:
+
+let frase= "Mergulhando em tecnologia."console.log(frase.substr(0,11)) // Mergulhando
+A função recebe como parâmetro o início e o fim da nova string a ser retirada da string principal. Na execução do código acima, temos como resultado a palavra Mergulhando. Bem útil, né?
+
+O resultado da execução do métodosubstr() é uma nova string .
+
+slice()
+
+Podemos utilizar também o método slice(), que usamos com arrays. Ele é similar ao substring() e retornará parte de uma string, desde que passemos nos parâmetros o índice de início e de fim. Veja abaixo:
+
+let frase= "Mergulhando em tecnologia."console.log(frase.slice(0,11)) // Mergulhando
+O resultado da execução do método slice() é uma nova string .
+
+replace()
+
+Com a função replace() temos a possibilidade de substituir parte de uma string por outra. Essa função recebe como parâmetros duas informações: a string que você quer substituir e a string que será colocada no lugar. Olhe o exemplo abaixo, em que precisamos substituir a string nomeusuario no texto padrão de comunicacao.
+
+let nome = "André";let comunicacao = " Olá, sr. nomeusurario, informamos que a partir da presente data o senhor tem 50% de desconto em nossa loja.";console.log(comunicacao.replace("nomeusurario",nome));
+Na execução deste exemplo, a string nomeusuario será substituída pelo conteúdo da variável nome. Como resultado da execução do método replace() teremos uma nova string.
+
+concat()
+
+O método concat() é uma opção para concatenar strings sem a utilização do operador de adição (+). Ele concatena duas strings, adicionando a nova string ao fim da anterior.
+
+Observe uma utilização do concat():
+
+let novaString = "Programe nas principais linguagens e plataformas. Explore linguagens como ";console.log(novaString.concat("JavaScript,").concat(" Python,").concat(" e C#."))
+O resultado obtido será: Programe nas principais linguagens e plataformas. Explore linguagens como JavaScript, Python, e C#.
+
+Para a execução do método replace() teremos como resultado uma nova string.
+
+split()
+
+O método split() é bem interessante, pois com ele conseguimos quebrar uma string com base em caracteres separadores que vamos informar para o método como parâmetro.
+
+Vamos ver um exemplo:
+
+let linguagens = "JavaScript;Java;C#;PHP;Python;Go;Vb;SQL;C;C++";let arrayLinguagens = linguagens.split(";");console.log(arrayLinguagens)
+Quando trabalhamos com o split(), devemos nos atentar, pois a execução gerará como resultado um array de strings com os elementos que foram separados com base no separador desejado. Portanto a execução do código resulta em um array como mostrado a seguir:
+
+[ 'JavaScript',  'Java',  'C#',  'PHP',  'Python',  'Go',  'Vb',  'SQL',  'C',  'C++' ]
+Lembre-se que o resultado da execução do método split() é um array de strings.
+
+trim()
+
+O trim() remove os espaços em branco no início ou fim de uma string. Se em alguma situação precisarmos fazer uma verificação de que o usuário não digitou o login com espaços, faremos;
+
+let login = "   andre@emailteste.com      ";let loginSemEspaco = login.trim();console.log(loginSemEspaco); //andre@emailteste.com
+A variável loginSemEspaco conterá uma nova string, sem os espaços em branco no início ou fim que podem ter sido digitados. Então, quando executado o método trim(), o resultado é uma nova string.
+
+No JavaScript ainda temos algumas variações desta função como: trimEnd(),trimStart(),trimLeft() e trimRight(), teste também estas variantes e veja o resultado obtido, ok?
